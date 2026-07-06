@@ -1,0 +1,16 @@
+{
+  "name": "express-mini-store",
+  "version": "1.0.0",
+  "description": "Mini store for practice",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Krrish Kohli",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
