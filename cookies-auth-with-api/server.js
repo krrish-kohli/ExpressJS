@@ -6,12 +6,8 @@ const app = express();
 const PORT = 3000;
 
 // ! Middlewares
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
-
-// ! Set the view engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
 
 // Simulated db of users
 const users = [
@@ -21,12 +17,7 @@ const users = [
 
 // Home Route
 app.get("/", (req, res) => {
-  res.render("home");
-});
-
-// Login Route (login form)
-app.get("/login", (req, res) => {
-  res.render("login");
+  res.json({ message: "Welcome to the API" });
 });
 
 // Login Route Logic
@@ -48,9 +39,10 @@ app.post("/login", (req, res) => {
   });
   // ! Render the user dashboard
   if (userFound) {
-    res.redirect("/dashboard");
+    res.json({ message: "Login Successful!" });
+  } else {
+    res.json({ message: "Login Failed" });
   }
-  // ! Redirect the user to login page
 });
 
 // Dashboard Route
@@ -62,10 +54,10 @@ app.get("/dashboard", (req, res) => {
   const username = userData ? userData.username : null;
   // ! Render the template
   if (username) {
-    res.render("dashboard", { username });
+    res.json({ message: ` Welcome ${username}, role: ${userData.role}` });
   } else {
     // ! Redirect to login
-    res.redirect("/login");
+    res.json({ message: "Unauthorized! Please login first" });
   }
 });
 
@@ -73,7 +65,7 @@ app.get("/dashboard", (req, res) => {
 app.get("/logout", (req, res) => {
   // ! Logout
   res.clearCookie("userData");
-  res.redirect("/login");
+  res.json({ message: "Logout Successfully" });
 });
 
 // ! Start the server
