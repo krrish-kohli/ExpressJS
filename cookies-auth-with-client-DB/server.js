@@ -9,9 +9,7 @@ const PORT = 3000;
 
 // Connect to mongoose
 mongoose
-  .connect(
-    "mongodb+srv://krrishkohli15_db_user:0pkp21JfhX7HXd3f@authentication.fikd2kx.mongodb.net/userAuthDB?appName=authentication",
-  )
+  .connect("YOUR MONGODB SERVER")
   .then(() => {
     console.log("DB has been connected");
   })
