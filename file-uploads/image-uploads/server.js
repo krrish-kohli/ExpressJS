@@ -11,7 +11,7 @@ const app = express();
 // Connect to mongodb
 mongoose
   .connect(
-    "mongodb+srv://krrishkohli15_db_user:iPu4bRJTB1jxuLPT@image-upload.sqh0rae.mongodb.net/images?appName=image-upload",
+    "YOUR_MONGODB_URI",
   )
   .then(() => {
     console.log("DB connected!");
